@@ -1,0 +1,20 @@
+.flex{
+    display: flex;
+}
+
+.left_bar {
+  background-color: pink;
+  flex-basis: 12em;
+}
+
+.right_bar {
+  flex-basis: 150px;
+}
+
+.right_bar li{
+  list-style:none
+}
+
+.main_contents {
+  flex-grow: 1;
+}
