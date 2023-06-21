@@ -28,6 +28,6 @@
          </form>
        </li>
     </div>
-    </header>
+</header>
 
 @endsection
