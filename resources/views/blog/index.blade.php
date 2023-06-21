@@ -27,7 +27,7 @@
             
         
         @empty
-            <li>日記はありません。</li>
+            <li>投稿がありません</li>
         @endforelse
     </ul>
 @endsection

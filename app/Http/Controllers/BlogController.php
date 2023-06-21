@@ -20,7 +20,7 @@ class BlogController extends Controller
         
         
         return view('blog.index',[
-            'title' => '日記一覧',
+            'title' => '投稿一覧',
             'blogs' =>$blogs,
             'user' =>$user,
              ]);
