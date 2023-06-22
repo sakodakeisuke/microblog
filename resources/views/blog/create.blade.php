@@ -6,7 +6,7 @@
 <h1>新規投稿画面</h1>
 <a href="{{ route('blogs.index')}}">一覧に戻る</a>
 
-<form method="post" action="{{ url('/blogs') }}">
+<form method="post" action="{{ route('blogs.store') }}">
   @csrf
 
   <div>
