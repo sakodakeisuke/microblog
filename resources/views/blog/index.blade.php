@@ -7,7 +7,11 @@
     
     <h1>{{$title}}</h1>
     
-    
+    @forelse($recommended_users as $recommended_user)
+      <a href="{{ route('users.show', $recommended_user) }}"><li>{{ $recommended_user->name }}</li></a>
+    @empty
+        <li>投稿がありません</li>
+    @endforelse
     
     <ul>
         @forelse($blogs as $blog)

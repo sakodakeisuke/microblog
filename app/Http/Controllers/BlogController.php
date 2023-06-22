@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Http\Requests\BlogRequest;
+use App\User;
 
 
 class BlogController extends Controller
@@ -23,6 +24,7 @@ class BlogController extends Controller
             'title' => '投稿一覧',
             'blogs' =>$blogs,
             'user' =>$user,
+            'recommended_users' => User::recommend($user->id)->get()
              ]);
     }        
              
