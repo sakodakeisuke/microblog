@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/blogs','BlogController@index')->name('blogs.index');
 Route::get('/blogs/create','BlogController@create')->name('blogs.create');
-Route::post('/blogs','BlogController@store');
-Route::get('/blogs/{id}/edit','BlogController@edit');
-Route::PATCH('/blogs/{id}','BlogController@update')->name('blogs.update');
+Route::post('/blogs','BlogController@store')->name('blogs.store');
+Route::get('/blogs/{id}/edit','BlogController@edit')->name('blogs.edit');
+Route::patch('/blogs/{id}','BlogController@update')->name('blogs.update');
 Route::delete('/blogs/{id}','BlogController@destroy')->name('blogs.destroy');
 
 Route::post('/follower','FollowController@store')->name('follows.store');
