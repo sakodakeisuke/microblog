@@ -7,13 +7,13 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function show($recommended_user)
+    public function show($user)
     {
-        $user = User::find($recommended_user);
+        $user = User::find($user);
     
         return view('users.show',[
             'title'=>'プロフィール',
-            'recommended_user' => $user,
+            'user' => $user,
             'user_blogs' => $user->blogs()->latest()->get(),
         
         ]);

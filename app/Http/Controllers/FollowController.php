@@ -12,7 +12,7 @@ class FollowController extends Controller
         $user = \Auth::user();
         Follow::create([
            'user_id' => $user->id,
-           'follow_id' => $request->follow_id,
+           'blog_id' => $request->blog_id,
         ]);
         \Session::flash('success', 'フォローしました');
         return redirect()->route('blogs.index');
@@ -20,7 +20,7 @@ class FollowController extends Controller
 
     public function destroy($recommended_user)
     {
-        $follow = \Auth::user()->follows->where('follow_id', $recommended_user)->first();
+        $follow = \Auth::user()->follows->where('blog_id', $recommended_user)->first();
         $follow->delete();
         \Session::flash('success', 'フォロー解除しました');
         return redirect()->route('blogs.index');

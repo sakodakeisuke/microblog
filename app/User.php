@@ -41,8 +41,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Blog');
     }
 
-    public function scopeRecommend($query, $self_id){
-        return $query->where('id', '!=', $self_id)->latest()->limit(3);
+    public function scopeRecommend($query, $self_ids){
+        return $query->whereNotIn('id', $self_ids)->latest()->limit(3);
     }
     
     public function follows(){
@@ -50,13 +50,16 @@ class User extends Authenticatable
     }
  
     public function follow_users(){
-      return $this->belongsToMany('App\User', 'follows', 'user_id', 'follow_id');
+      return $this->belongsToMany('App\User', 'follows', 'user_id', 'blog_id');
     }
  
     public function followers(){
-      return $this->belongsToMany('App\User', 'follows', 'follow_id', 'user_id');
+      return $this->belongsToMany('App\User', 'follows', 'blog_id', 'user_id');
     }
     
+    public function followBlogs(){
+      return $this->belongsToMany('App\Blog','follows');
+    }
     
     public function isFollowing($user){
       $result = $this->follow_users->pluck('id')->contains($user->id);

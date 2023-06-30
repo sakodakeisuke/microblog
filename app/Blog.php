@@ -12,5 +12,13 @@ class Blog extends Model
     public function user(){
       return $this->belongsTo('App\User');
     }
+
+    public function follows(){
+        return $this->hasMany('App\Follow');
+    }
+
+    public function followedUser(){
+      return $this->belongsToMany('App\User','follows');
+    }
 }
 
