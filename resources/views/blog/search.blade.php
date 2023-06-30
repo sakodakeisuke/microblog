@@ -4,6 +4,14 @@
 
 @section('content')
 
+<div>
+  {{--<form action="{{ route('blogs.index') }}" method="GET">--}}
+  <form action="{{ route('blogs.search') }}" method="GET">
+    <input type="text" name="keyword" value="{{ $keyword }}">
+    <input type="submit" value="検索">
+  </form>
+</div>
+
 @forelse($blogs as $blog)
     
   @if($blog->user->id !== $user->id) 
