@@ -23,12 +23,12 @@
       @endif
     @endif
     <ul>
-        @forelse($user_blogs as $user_blog)
-            {{$user_blog->user->name}}:
-            <li>{!! nl2br($user_blog->log) !!}:{{$user_blog->created_at}}</li>
-    @empty
-            <li>投稿がありません</li>
-        @endforelse
+      @forelse($user_blogs as $user_blog)
+        {{$user_blog->user->name}}:
+        <li>{!! nl2br($user_blog->log) !!}:{{$user_blog->created_at}}</li>
+      @empty
+        <li>投稿がありません</li>
+      @endforelse
     </ul>
     
 @endsection

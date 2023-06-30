@@ -18,10 +18,10 @@ class BlogController extends Controller
     
     public function index(Request $request){
         $user = \Auth::user();
-        //$blogs =Blog::where('user_id',"=", \Auth::user()->id)->latest()->get();
+        
         $follow_users_ids=$user->follow_users->pluck('id');
 
-        //$follow_blogs=$user->blogs()->orWhereIn('user_id', $follow_users_ids )->get();
+        
         $follow_users_ids->add($user->id);
         
         $keyword = $request->input('keyword');
@@ -32,14 +32,12 @@ class BlogController extends Controller
             $query->where('log', 'LIKE', "%{$keyword}%");
             
         }
-        //dd($query->toSql());
+        
         $follow_blogs=$query->latest()->get();
-       // dd($follow_blogs,$keyword);
-        //$follow_blogs = $query->latest('blogs.created_at')->get();
+       
         
         return view('blog.index',[
             'title' => '投稿一覧',
-            //'blogs' =>$blogs,
             'user' =>$user,
             'recommended_users' => User::recommend($follow_users_ids)->get(),
             'follow_blogs'=>$follow_blogs,
@@ -97,10 +95,6 @@ class BlogController extends Controller
     public function search(Request $request){
         $user = \Auth::user();
         $blogs=Blog::query();
-        
-        //$follow_users_ids=$user->follow_users->pluck('id');
-        //$follow_users_ids->add($user->id);
-        
         $keyword = $request->input('keyword');
         $query = $blogs;
         
@@ -115,7 +109,7 @@ class BlogController extends Controller
             'blogs' =>$blogs,
             'user' =>$user,
             'keyword'=>$keyword,
-             ]);
-}
+        ]);
+        }
 
 }
