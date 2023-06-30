@@ -23,3 +23,11 @@ Route::post('/blogs','BlogController@store')->name('blogs.store');
 Route::get('/blogs/{id}/edit','BlogController@edit')->name('blogs.edit');
 Route::patch('/blogs/{id}','BlogController@update')->name('blogs.update');
 Route::delete('/blogs/{id}','BlogController@destroy')->name('blogs.destroy');
+
+Route::post('/follower','FollowController@store')->name('follows.store');
+Route::delete('/follower/{recommended_user}','FollowController@destroy')->name('follows.destroy');
+
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
+
+Route::get('/blogs/search','BlogController@search')->name('blogs.search');
+
